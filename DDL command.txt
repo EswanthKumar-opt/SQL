@@ -1,0 +1,64 @@
+.......................DDL commands - Data definifion language............................
+
+
+oru schemas ah create pannitu thann ellam pannanum
+
+ # create schemas schemas name
+
+then athula than use pandronu soldrathuku 
+
+ #use schemasname
+
+First command:
+
+table create pandrathuku
+
+ # create table tablename
+
+table la values ah add pandrathu
+
+  #insert into tablename values ()
+
+second command:
+
+already table la irukuratha alter pandrathuku intha command
+
+  #alter table student add City varchar(100)
+
+ column name ah remane pandrathu
+
+  #alter table student rename column grade to finalgrade
+
+already irukura name ah vera change pandrathu
+
+ #alter table student change Department Dept varchar(100)
+
+variable type ah matum mathurathuku int to varchar
+
+ ##alter table student change City City int
+
+table la irukura value matum delete pandrathuku
+
+ # delete from tablename where columname =value
+
+Drop nu oru command iruku ellam delete pandrathuku
+
+ #drop table student
+
+truncate nu oru command iruku ellam delete pannanum table ku ulla irukura values matum
+
+  # truncate table student
+
+
+Null is iruntha atha delete pandrathu
+
+  #delete from customer where mobile_number is null
+
+oru value matum pakkanum na
+
+ #select columname from tablename
+
+
+
+
+

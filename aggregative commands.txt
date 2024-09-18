@@ -1,0 +1,66 @@
+                         AGGREGATE FUNCTION
+
+
+  total ah added pandrathuku
+
+  #SELECT SUM(column name) FROM tablename
+
+  column name ah change um pannikalam
+
+  #SELECT SUM(column name) as totalmarks FROM tablename
+
+ yarum maximum score panni iruka nu pakkurathuku
+
+  #SELECT MAX(column name) FROM tablename
+
+ yarum manimum score panni iruka nu pakkurathuku
+
+    #SELECT MIN(column name) FROM tablename
+
+ average pakkurathuu 
+  
+  #SELECT avg(column name) FROM tablename
+
+ count pandrathu 
+  
+  #SELECT count(column name) FROM tablename
+
+  count pandrathu perticular ah pakkurathu
+
+   #SELECT COUNT(coulmnname) FROM tablename WHERE columnname="CSE"
+
+
+
+              ADvance agrregative function
+
+  mark la order ah pakkanum na
+
+   #select student_name,student_mark from student order by student_mark desc or asc
+
+  group ah average kandupidika grop by use pannuvom
+
+  #select avg(student_mark),department from student group by department
+
+  group ah average kandupidika grp by use pannuvom and count um use panni irukum
+
+  #select avg(student_mark),count(department) from student group by department 
+
+ Ethulaiyee apadiyeaa order by um pakka mudiyum ana atha vaichi count pandromo antha name than use pannanum
+
+  #select count(student_mark),department from student group by department order by count(student_name)
+
+  particular ah department ah base panni pannakanum na
+
+  #select count(*),department from employee group by department
+
+  athachi limit matum venum na
+
+  #select avg(salary),department from employee group by department order by avg(salary) desc limit 2
+
+
+
+
+
+
+
+

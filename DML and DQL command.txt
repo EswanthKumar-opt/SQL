@@ -1,0 +1,35 @@
+  ..............................DML command- Data Manupliation command..................
+
+
+table kulla iruka ellathaiyum pakkanum na SQL command use pannanum
+
+  # select * from tablename
+        * select na SQL command pakkathuku table ah
+        * * na ellam pakkanum
+
+ Table la values ah isert pandrathuku 
+    
+    #insert into tablename values("John", 23, "CSE")
+
+ Table la values thapa iruntha atha maruthathuku but ethu full ah marum
+ 
+   #update tablename set department="computer" where department="CSE"
+
+ table la iruku rathu delete pannaum na
+  
+  # delete from tablename where department = "computer"
+
+ Table la values ah full ah delete pannanum na 
+
+  #delete form tablename
+
+ Oru colum ah matum delete pandrathuku
+
+  # alter table tablename drop column columnname
+
+  verum name ah matum print pannanum avanga kuduthathu
+
+  #select * from student where name="jane smith"or name="bob johnson"
+  
+  #select * from student where name in("jane smith", "bob johnson")
+

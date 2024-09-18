@@ -1,0 +1,31 @@
+
+   having clause
+
+      #select avg(salary),department from employee group by department having avg(salary) >55000
+
+
+
+
+            KEY words 
+
+    key word or , and  
+
+     #select * from student where finalgrade="A" or finalgrade="B" and age>=20
+
+    between
+   
+   #select * from student where age between 18 and 26
+
+
+........................................primary key..............................................................
+
+    set of rules is the primary key
+
+* duplicate varathu 
+*null nu matha mudiyathu
+*only we use one primary key in one table
+ 
+
+    #alter table books add constraint pk_booktitle primary key (columnname)
+                * pk_booktitle is a name of the primary key
+
