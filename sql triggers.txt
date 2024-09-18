@@ -1,0 +1,45 @@
+#####################   types of the Triggers #############################
+
+
+1, DML Triggers (insert, update, delete)
+2, DDL Triggers ( Create, Alter, Drop)
+3, Logon Triggers ( User sessions ) 
+
+
+There is an Virtual tables 
+
+--------------------------------------------------------
+            | Inserted Table  |          Deleted Table  |  
+---------------------------------------------------------
+Insert      Stores New Inserted       -
+
+------------------------------------------------------------
+
+
+update       Stores new Updated    Stores old values for 
+                                    updated recoreds
+
+------------------------------------------------------------
+
+
+delete                               Stores deleted records
+
+-------------------------------------------------------------|
+
+#####################Syntax for Triggers
+
+Create Trigger trg_emp_audit
+On Employees (main table)
+After Insert (tigger will execute after the insertion)
+As
+Begin
+Insert Into employees_audit ( its we need to create the table)
+Select Employees_Id, 'INS', GETDATE()
+From inserted
+END
+
+########## employees_audit
+
+tigger 
+
+

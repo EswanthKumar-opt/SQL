@@ -1,0 +1,39 @@
+###################### Index In SQL ###################
+
+There are two types of index 
+
+* clustered index (we able to create only one clustered index for one table) - visible
+* NON - Clustered index (we able to create many clustered index for one table - Non visible
+
+
+Below statement used to create a new table(new_employee) with the old table details(employee_details)
+ 
+select * into new_employee from public.employee_details;
+
+##################  syntax for Index
+
+-- index creation syntax
+
+-- create index id_name
+-- on new_employee(name);
+
+-- unique index syntax
+
+-- create unique index id_id
+-- on new_employee(id);
+
+-- cluster index syntax
+
+-- create clustered index id_age
+-- on new_employee(age); (this is for workbench)
+
+-- CLUSTER new_employee USING id_age; ( this syntax is not working );
+
+-- Alter index table
+
+-- alter table new_employee
+-- add constraint pk_employee primary key(name);
+
+-- Delete index
+
+-- DROP Index id_age;
