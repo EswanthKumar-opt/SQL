@@ -1,0 +1,22 @@
+##  Access grant and revoke
+
+The GRANT statement allows you to give specific privileges to users or roles. Privileges can be on the entire database,
+specific tables, views, or other database objects.
+
+# grant syntax 
+
+grant select, insert on world.* to "friend"
+
+user only have to do above actions 
+
+
+The REVOKE statement is used to take away previously granted privileges.
+
+## Revoke 
+
+grant select, insert on world.* from  "friend"
+
+## ALL Revoke
+
+REVOKE ALL PRIVILEGES ON table_name FROM user_name;
+

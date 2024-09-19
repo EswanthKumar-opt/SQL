@@ -1,0 +1,183 @@
+##########################  Windows functions
+
+CREATE TABLE public.Students (
+    StudentID INT PRIMARY KEY,
+    StudentName VARCHAR(100),
+    Marks INT
+);
+
+INSERT INTO Students (StudentID, StudentName, Marks)
+VALUES 
+    (1, 'Alice', 95),
+    (2, 'Bob', 90),
+    (3, 'Charlie', 90),
+    (4, 'Dave', 85),
+    (5, 'Eve', 85),
+    (6, 'Frank', 80),
+    (7, 'Grace', 75),
+    (8, 'Heidi', 75),
+    (9, 'Ivan', 70),
+    (10, 'Judy', 65);
+
+SELECT * FROM students;
+
+############### RANK  
+
+For Rank, positions 3 and 5 are skipped due to ties.
+
+SELECT 
+    StudentName,
+    Marks,
+    RANK() OVER (ORDER BY Marks DESC) AS Rank
+FROM Students;
+
+################# DENSE_RANK
+
+For DenseRank, there are no gaps even with ties.
+
+SELECT 
+    StudentName,
+    Marks,
+    DENSE_RANK() OVER (ORDER BY Marks DESC) AS DenseRank
+FROM Students;
+
+
+##################### ROW NUMBER
+
+it is used to find the duplicate and old, updated order list
+
+SELECT
+    StudentName,
+    marks,
+    ROW_NUMBER() OVER (ORDER BY MARKS) AS ROW_number
+FROM students;
+
+----------- partition 
+
+it is used to group the columns, like a group by 
+
+like:
+SELECT
+    studentsname,
+    marks,
+    any windowfun() over(partition by deparment order by marks DESC)
+
+
+#############   LTILE
+
+its is used to give the same rank rank whatever we need
+
+SELCT * 
+NLITE(10) over(order by salary desc) AS Bucket
+FROM employees
+
+
+
+###############  vera mathiri um kudukalam
+
+SELECT
+RANK () OVER Win AS Rank,
+DENSE_RANK() OVER Win AS DenseRank
+FROM employees
+WINDOW Win as (PARTITION BY DEPARTMENT ID ORDER BY SALARY DESC);
+
+
+#####################  window functions
+
+A window function performs a calculation across a set
+of table rows that are somehow related to the current
+row. This is comparable to the type of calculation that
+can be done with an aggregate function. But unlike
+regular aggregate functions, use of a window function
+does not cause rows to become grouped into a single
+output row - the rows retain their separate identities.
+Behind the scenes, the window function is able to access
+more than just the current row of the query result.
+
+* aggregrate functions
+
+select sum(salary) from employees;
+
+select deparment_id,SUM(salary) from employees
+group by deparment_id;
+
+* in window
+select *, sum(salary) rows(partition by deparment_id) as total_salary
+from employees;
+
+running total venuna
+
+select *, sum(salary) rows(partition by deparment_id order by emp_id) as total_salary
+from employees;
+
+
+---------  first value and last value functions -------------
+
+---------------table -----
+
+ProductID Standard Cost ModifiedDate
+707 12.0278 2012-05-29 00:00:00.000
+707 13.086 2013-05-16 00:00:00.000
+707 13.8782 2013-05-29 00:00:00.000
+708 12.0278 2012-05-29 00:00:00.000
+708 13.0863 2013-05-16 00:00:00.000
+708 13.8782 2013-05-29 00:00:00.000
+709 3.3963 2012-05-29 00:00:00.000
+710 3.3963 2012-05-29 00:00:00.000
+711 12.0278 2012-05-29 00:00:00.000
+711 13.0863 2013-05-16 00:00:00.000
+711 13.8782 2013-05-29 00:00:00.000
+712 5.7052 2012-05-29 00:00:00.000
+
+
+SELECT Product ID, Standard Cost, Modified Date,
+FIRST_VALUE (StandardCost) OVER (PARTITION BY ProductID ORDER BY ModifiedDate) AS Initial_value,
+LAST_VALUE(StandardCost) OVER (PARTITION BY ProductID ORDER BY ModifiedDate
+RANGE BETWEEN UNBOUNDED PRECEDING
+AND UNBOUNDED FOLLOWING) AS Final_value
+FROM Production. ProductCostHistory
+ORDER BY Product ID, ModifiedDate
+
+* Range is called as frames there are many frames are there 
+
+----------------  output ------------
+
+ProductID StandardCost ModifiedDate Initial_value Final_value
+707 12.0278 2012-05-29 00:00:00.000 12.0278 13.8782
+707 13.0863 2013-05-16 00:00:00.000 12.0278 13.8782
+707 13.8782 2013-05-29 00:00:00.000 12.0278 13.8782
+708 12.0278 2012-05-29 00:00:00.000 12.0278 13.8782
+708 13.0863 2013-05-16 00:00:00.000 12.0278 13.8782
+708 13.8782 2013-05-29 00:00:00.000 12.0278 13.8782
+709 3.3963 2012-05-29 00:00:00.000 3.3963 3.3963
+710 3.3963 2012-05-29 00:00:00.000 3.3963 3.3963
+711 12.0278 2012-05-29 00:00:00.000 12.0278 13.8782
+711 13.0863 2013-05-16 00:00:00.000 12.0278 13.8782
+711 13.8782 2013-05-29 00:00:00.000 12.0278 13.8782
+
+
+############### LAG and LEAD
+
+
+SELECT Product ID, Standard Cost, ModifiedDate,
+LAG (StandardCost) OVER (PARTITION BY ProductID ORDER BY ModifiedDate) AS Previous_value,
+LEAD (Standard Cost) OVER (PARTITION BY ProductID ORDER BY ModifiedDate) AS Next_value
+FROM Production. Product CostHistory
+ORDER BY Product ID, ModifiedDate
+
+output
+
+ProductID Standard Cost ModifiedDate Previous_value Next_value
+707 12.0278 2012-05-29 00:00:00.000 NULL 13.0863
+707 13.0863 2013-05-16 00:00:00.000 12.0278 13.8782
+707 13.878 2013-05-29 00:00:00.000 13.0863 NULL
+708 12.0278 2012-05-29 00:00:00.000 NULL 13.0863
+708 13.0863 2013-05-16 00:00:00.000 12.0278 13.8782
+708 13.8782 2013-05-29 00:00:00.000 13.0863 NULL
+709 3.3963 2012-05-29 00:00:00.000 NULL NULL
+710 3.3963 2012-05-29 00:00:00.000 NULL NULL
+711 12.0278 2012-05-29 00:00:00.000 NULL 13.0863
+711 13.0863 2013-05-16 00:00:00.000 12.0278 13.8782
+711 13.8782 2013-05-29 00:00:00.000 13.0863 NULL
+712 5.7052 2012-05-29 00:00:00.000 NULL 6.9223
+712 6.9223 2013-05-16 00:00:00.000 5.7052 5.2297
