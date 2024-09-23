@@ -1,0 +1,18 @@
+################ Fact tables and Dimension tables
+
+
+Fact tables:
+
+• It contains measurements, facts or metrics of the attributes
+• Hold no meaning in itself
+• Numeric and quantifiable
+• • Created or loaded after dimensions are loaded
+• Primary Key is a new column identifying the unique row, references dim
+tables with FK
+
+
+. • Dimension tables:
+
+. Gives context to facts, holds attributes for the facts
+• • Created or loaded before facts are loaded
+• Primary key is referenced by fact tables

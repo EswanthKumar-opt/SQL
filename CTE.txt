@@ -1,0 +1,10 @@
+
+
+select * from public.employee_details;
+
+with cte1 as (select id,age from public.employee_details)
+select * from cte1;
+
+
+with cte2 as (select id, avg(salary) as salary from public.employee_details group by id)
+select max(salary) from cte2;
